@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// -----------------------------databases name here 
+datasource db {
+  provider = "mysql"  
+  url      = env("messageDATABASE_URL")
+}
+
+//  ----------------------------create table here 
+model Users{
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(55)
+  email String @unique
+  password String @db.VarChar(16)
+}
